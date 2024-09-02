@@ -11,7 +11,8 @@ ColorScheme appColorScheme(){
       error: AppColor.error,
       onError: AppColor.warning,
       surface: Colors.white,
-      onSurface: Colors.black
+      onSurface: Colors.black,
+      inverseSurface: AppColor.success
   );
 }
 
