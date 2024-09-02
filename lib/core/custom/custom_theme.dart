@@ -6,12 +6,12 @@ ColorScheme appColorScheme(){
       brightness: Brightness.light,
       primary: AppColor.gradient1,
       onPrimary: AppColor.gradient2,
-      secondary: AppColor.black,
+      secondary: Colors.grey.shade300,
       onSecondary: AppColor.white,
       error: AppColor.error,
       onError: AppColor.warning,
-      surface: AppColor.success,
-      onSurface: AppColor.info
+      surface: Colors.white,
+      onSurface: Colors.black
   );
 }
 
