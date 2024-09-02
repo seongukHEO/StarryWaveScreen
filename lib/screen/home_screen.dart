@@ -26,15 +26,21 @@ class HomeScreen extends ConsumerWidget {
         selectedIndex: selectIndex,
         destinations: [
           NavigationDestination(
-              icon: SvgPicture.asset('assets/icon/outlined/stopwatch_play.svg'),
+              icon: selectIndex == 0
+                ? SvgPicture.asset('assets/icon/bold/stopwatch_play_bold.svg')
+                : SvgPicture.asset('assets/icon/outlined/stopwatch_play.svg'),
               label: "할 일"
           ),
           NavigationDestination(
-              icon: SvgPicture.asset('assets/icon/outlined/calendar_record.svg'),
+              icon: selectIndex == 1
+                ? SvgPicture.asset('assets/icon/bold/calendar_record_bold.svg')
+                : SvgPicture.asset('assets/icon/outlined/calendar_record.svg'),
               label: "기록"
           ),
           NavigationDestination(
-              icon: SvgPicture.asset('assets/icon/outlined/user_circle.svg'),
+              icon: selectIndex == 2
+                ? SvgPicture.asset('assets/icon/bold/user_circle_bold.svg')
+                : SvgPicture.asset('assets/icon/outlined/user_circle.svg'),
               label: "마이"
           ),
         ],
