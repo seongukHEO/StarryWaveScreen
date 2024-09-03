@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:starrywave_screen/core/custom/custom_theme.dart';
 import 'package:starrywave_screen/screen/home_screen.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
+void main()async {
+  await initializeDateFormatting('ko_KR', null);
   runApp(ProviderScope(child: MyApp()));
 }
 

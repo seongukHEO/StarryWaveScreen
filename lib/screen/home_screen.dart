@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:starrywave_screen/provider/home/home_provider.dart';
+import 'package:starrywave_screen/widget/home/my_page_widget.dart';
+import 'package:starrywave_screen/widget/home/record_widget.dart';
+import 'package:starrywave_screen/widget/home/working_widget.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -14,9 +17,9 @@ class HomeScreen extends ConsumerWidget {
       body: IndexedStack(
         index: selectIndex,
         children: [
-          Container(color: Colors.redAccent,),
-          Container(color: Colors.blueAccent,),
-          Container(color: Colors.orangeAccent,),
+          WorkingWidget(),
+          RecordWidget(),
+          MyPageWidget()
         ],
       ),
       bottomNavigationBar: NavigationBar(
