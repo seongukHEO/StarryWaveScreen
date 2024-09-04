@@ -69,6 +69,7 @@ flutter:
     - assets/icon/outlined/stopwatch_play.svg
     - assets/icon/outlined/calendar_record.svg
     - assets/icon/outlined/user_circle.svg
+    - assets/icon/outlined/goal.svg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
