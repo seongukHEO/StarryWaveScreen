@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:starrywave_screen/common/date_format_today.dart';
-import 'package:starrywave_screen/widget/dowork/focus_widget.dart';
-import 'package:starrywave_screen/widget/dowork/normal_widget.dart';
+import 'package:starrywave_screen/widget/dowork/focus/focus_widget.dart';
+import 'package:starrywave_screen/widget/dowork/normal/normal_widget.dart';
 
 class WorkingWidget extends StatefulWidget {
 

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:starrywave_screen/widget/dowork/focus/focus_list_widget.dart';
 
 class FocusWidget extends StatelessWidget {
   const FocusWidget({super.key});
@@ -9,6 +10,7 @@ class FocusWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        color: Colors.grey.shade200,
         padding: EdgeInsets.all(10),
         child: Column(
           children: [
@@ -17,14 +19,7 @@ class FocusWidget extends StatelessWidget {
               child: Text('0 개', style: TextStyle(color: Colors.grey),),
             ),
             Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset('assets/icon/outlined/goal.svg'),
-                    SizedBox(height: 20,),
-                    Text("아직 추가된 할 일이 없어요!\n아래 버튼으로 새 할 일을 추가해보세요", style: TextStyle(color: Colors.grey),)
-                  ],
-                )
+                child: FocusListWidget()
             )
           ],
         ),
