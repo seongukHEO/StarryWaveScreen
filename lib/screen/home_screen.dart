@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:starrywave_screen/provider/home/home_provider.dart';
+import 'package:starrywave_screen/screen/add_work_screen.dart';
 import 'package:starrywave_screen/widget/home/my_page_widget.dart';
 import 'package:starrywave_screen/widget/home/record_widget.dart';
 import 'package:starrywave_screen/widget/home/working_widget.dart';
@@ -54,6 +55,12 @@ class HomeScreen extends ConsumerWidget {
           backgroundColor: Theme.of(context).colorScheme.onPrimary,
           child: SvgPicture.asset('assets/icon/bold/add_file_bold.svg', colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),),
           onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AddWorkScreen(),  // 이동할 화면을 정의
+              ),
+            );
 
           },
         ),

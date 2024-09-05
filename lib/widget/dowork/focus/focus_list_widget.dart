@@ -8,7 +8,6 @@ class FocusListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isRunning = false;
     return ListView.builder(
         itemCount: 5,
         itemBuilder: (context, index){
