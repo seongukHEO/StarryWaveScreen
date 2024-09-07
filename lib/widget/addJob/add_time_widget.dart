@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:starrywave_screen/common/calendar/calendar_bottom_sheet.dart';
 import 'package:starrywave_screen/common/dialog/add_work_cancel_dialog.dart';
 
 class AddTimeWidget extends StatelessWidget {
@@ -117,7 +118,15 @@ class AddTimeWidget extends StatelessWidget {
                         Text("0000.00.00"),
                         IconButton(
                             onPressed: (){
-                              
+                              showModalBottomSheet(
+                                  context: context,
+                                  isDismissible: false, // 바깥 클릭해도 닫히지 않음
+                                  enableDrag: false,    // 스와이프로도 닫히지 않음
+                                  builder: (BuildContext context){
+                                return CalendarBottomSheet();
+                              },
+                                isScrollControlled: true
+                              );
                             }, 
                             icon: SvgPicture.asset('assets/icon/bold/calendar_bold.svg',
                               colorFilter: ColorFilter.mode(Color(0xFF8FA3FF), BlendMode.srcIn),)
