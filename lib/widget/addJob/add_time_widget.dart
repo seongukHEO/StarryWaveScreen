@@ -1,12 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:starrywave_screen/common/dialog/add_work_cancel_dialog.dart';
 
 class AddTimeWidget extends StatelessWidget {
   const AddTimeWidget({super.key});
 
+
   @override
   Widget build(BuildContext context) {
+
+    void _showDialog()async{
+      showDialog(context: context, builder: (context){
+        return AddWorkCancelDialog();
+      });
+    }
+
     return Scaffold(
       body: Container(
         padding: EdgeInsets.fromLTRB(24, 0, 24, 10),
@@ -47,7 +56,7 @@ class AddTimeWidget extends StatelessWidget {
             SizedBox(height: 72,),
             GestureDetector(
               onTap: (){
-                
+                _showDialog();
               },
               child: Container(
                 height: 48,
