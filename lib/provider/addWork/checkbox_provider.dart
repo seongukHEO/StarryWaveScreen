@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CheckboxProvider extends StateNotifier<bool>{
@@ -7,6 +9,8 @@ class CheckboxProvider extends StateNotifier<bool>{
   void updateCheckBox(bool value){
     state = value;
   }
+
+
 }
 
 //해당 provider에 접근하기 위한 변수

@@ -1,15 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:starrywave_screen/common/calendar/calendar_bottom_sheet.dart';
 import 'package:starrywave_screen/common/dialog/add_work_cancel_dialog.dart';
+import 'package:starrywave_screen/provider/addWork/checkbox_provider.dart';
 
-class AddTimeWidget extends StatelessWidget {
+class AddTimeWidget extends ConsumerWidget {
   const AddTimeWidget({super.key});
 
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    final isChecked = ref.watch(checkBoxProvider);
 
     void _showDialog()async{
       showDialog(context: context, builder: (context){
@@ -55,51 +59,27 @@ class AddTimeWidget extends StatelessWidget {
               )
             ),
             SizedBox(height: 72,),
-            GestureDetector(
-              onTap: (){
-                _showDialog();
-              },
-              child: Container(
-                height: 48,
-                width: 141,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(24),
-                  color: Colors.black
+            Row(
+              children: [
+                Checkbox(
+                    value: isChecked,
+                    onChanged: (bool? value){
+                      ref.read(checkBoxProvider.notifier).updateCheckBox(value ?? true);
+                    },
+                  shape: CircleBorder(),
+                  checkColor: Colors.green,
+                  activeColor: Colors.white,
                 ),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text("아직 모르겠어요", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16, color: Colors.white),),
-                ),
-              ),
+                Text("모르겠음 - 미정", style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 14,
+                  color: isChecked
+                      ? Colors.green
+                      : Colors.grey
+                ),)
+              ],
             ),
             SizedBox(height: 56,),
-            Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: "예상 가능한",
-                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16)
-                  ),
-                  TextSpan(
-                      text: " 날짜",
-                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16, color: Colors.green)
-                  ),
-                  TextSpan(
-                      text: "나",
-                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16)
-                  ),
-                  TextSpan(
-                      text: " 시간",
-                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16, color: Colors.green)
-                  ),
-                  TextSpan(
-                      text: "이\n있다면 설정 해보세요",
-                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16)
-                  ),
-                ]
-              )
-            ),
-            SizedBox(height: 12,),
             Row(
               children: [
                 Expanded(
