@@ -52,7 +52,7 @@ class HomeScreen extends ConsumerWidget {
       floatingActionButton: switch(selectIndex){
         0 => FloatingActionButton(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-          backgroundColor: Theme.of(context).colorScheme.onPrimary,
+          backgroundColor: Theme.of(context).colorScheme.onSurface,
           child: SvgPicture.asset('assets/icon/bold/add_file_bold.svg', colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),),
           onPressed: (){
             Navigator.push(
