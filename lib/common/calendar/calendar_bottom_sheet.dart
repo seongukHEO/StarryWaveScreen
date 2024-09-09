@@ -50,7 +50,7 @@ class CalendarBottomSheet extends ConsumerWidget{
                 },
                 calendarFormat: CalendarFormat.month,
                 headerStyle: HeaderStyle(
-                  titleCentered: true,
+                    titleCentered: true,
                   formatButtonVisible: false,
                   titleTextFormatter: (date, locale){
                     return DateFormat('yyyy.MM', locale).format(date);

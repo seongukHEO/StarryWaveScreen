@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:starrywave_screen/common/calendar/calendar_bottom_sheet.dart';
 import 'package:starrywave_screen/common/dialog/add_work_cancel_dialog.dart';
 import 'package:starrywave_screen/provider/addWork/checkbox_provider.dart';
+import 'package:starrywave_screen/widget/addJob/state_Grid_widget.dart';
 
 class AddTimeWidget extends ConsumerWidget {
   const AddTimeWidget({super.key});
@@ -58,13 +59,16 @@ class AddTimeWidget extends ConsumerWidget {
                 ]
               )
             ),
-            SizedBox(height: 72,),
+            SizedBox(height: 34,),
             Row(
               children: [
                 Checkbox(
                     value: isChecked,
                     onChanged: (bool? value){
                       ref.read(checkBoxProvider.notifier).updateCheckBox(value ?? true);
+                      if (isChecked == false) {
+                        _showDialog();
+                      }
                     },
                   shape: CircleBorder(),
                   checkColor: Colors.green,
@@ -79,7 +83,7 @@ class AddTimeWidget extends ConsumerWidget {
                 ),)
               ],
             ),
-            SizedBox(height: 56,),
+            SizedBox(height: 8,),
             Row(
               children: [
                 Expanded(
@@ -95,7 +99,11 @@ class AddTimeWidget extends ConsumerWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("0000.00.00"),
+                        Text("0000.00.00", style: TextStyle(
+                          color: isChecked
+                              ? Colors.grey
+                              : Colors.black
+                        ),),
                         IconButton(
                             onPressed: (){
                               showModalBottomSheet(
@@ -107,7 +115,7 @@ class AddTimeWidget extends ConsumerWidget {
                               },
                                 isScrollControlled: true
                               );
-                            }, 
+                            },
                             icon: SvgPicture.asset('assets/icon/bold/calendar_bold.svg',
                               colorFilter: ColorFilter.mode(Color(0xFF8FA3FF), BlendMode.srcIn),)
                         )
@@ -128,7 +136,11 @@ class AddTimeWidget extends ConsumerWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("없음"),
+                        Text("없음", style: TextStyle(
+                            color: isChecked
+                                ? Colors.grey
+                                : Colors.black
+                        ),),
                         IconButton(
                             onPressed: (){
 
@@ -141,51 +153,66 @@ class AddTimeWidget extends ConsumerWidget {
                 ),
               ],
             ),
+            SizedBox(height: 48,),
             Expanded(
+              child: Container(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 2,
-                          child: GestureDetector(
-                            onTap: (){},
-                            child: Container(
-                              height: 56,
-                              margin: EdgeInsets.fromLTRB(0, 0, 4, 0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(),
-                                color: Colors.white
-                              ),
-                              child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text("이전", style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 20),)),
-                            ),
+                    Text("만약 못 끝냈을 때 예상되는 나의 모습은?", style: TextStyle(
+                      fontWeight: FontWeight.w600, fontSize: 16, color: isChecked
+                        ? Colors.grey
+                        : Colors.black
+                    ),),
+                    SizedBox(height: 13,),
+                    StateGridWidget()
+                  ],
+                ),
+              ),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: GestureDetector(
+                        onTap: (){},
+                        child: Container(
+                          height: 56,
+                          margin: EdgeInsets.fromLTRB(0, 0, 4, 0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(),
+                            color: Colors.white
                           ),
+                          child: Align(
+                              alignment: Alignment.center,
+                              child: Text("이전", style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 20),)),
                         ),
-                        Expanded(
-                          flex: 3,
-                          child: GestureDetector(
-                            onTap: (){},
-                            child: Container(
-                              height: 56,
-                              margin: EdgeInsets.fromLTRB(4, 0, 0, 0),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Colors.black
-                              ),
-                              child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text("확인", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 20),)),
-                            ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: GestureDetector(
+                        onTap: (){},
+                        child: Container(
+                          height: 56,
+                          margin: EdgeInsets.fromLTRB(4, 0, 0, 0),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Colors.black
                           ),
-                        )
-                      ],
+                          child: Align(
+                              alignment: Alignment.center,
+                              child: Text("확인", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 20),)),
+                        ),
+                      ),
                     )
                   ],
                 )
+              ],
             )
           ],
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:starrywave_screen/common/component/textField_component.dart';
 
 class AddTitleWidget extends StatefulWidget {
   AddTitleWidget({super.key});
@@ -57,24 +58,7 @@ class _AddTitleWidgetState extends State<AddTitleWidget> {
               height: 48,
               //width: 358,
               margin: EdgeInsets.fromLTRB(0, 30, 24, 0),
-              child: TextField(
-                controller: _textEditingController,
-                style: TextStyle(fontSize: 12),
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.grey.shade100,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(6),
-                      borderSide: BorderSide.none,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(6),
-                        borderSide: BorderSide.none),
-                    hintText: "할 일의 제목을 작성해보세요!",
-                    hintStyle:
-                        TextStyle(color: Colors.grey.shade500, fontSize: 12)),
-                cursorColor: Colors.black,
-              ),
+              child: TextfieldComponent(hintText: "할 일의 제목을 작성해보세요!", controller: _textEditingController,)
             ),
             Text(
               " *20자 이내로 작성해주세요.",
