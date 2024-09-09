@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:starrywave_screen/provider/addWork/checkbox_provider.dart';
 import 'package:starrywave_screen/provider/addWork/grid_provider.dart';
 
 class StateGridWidget extends ConsumerWidget {
@@ -18,6 +19,7 @@ class StateGridWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isSelected = ref.watch(gridStateProvider);
+    final isChecked = ref.watch(checkBoxProvider);
 
     return Expanded(
       child: GridView.builder(
@@ -38,7 +40,7 @@ class StateGridWidget extends ConsumerWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(width: 3, color: Color(0xFFF1F4F8)),
-                  color: isSelected[index]
+                  color: isSelected[index] && isChecked == false
                     ? gridSelectedColor[index]
                     : Colors.white
                 ),
@@ -46,7 +48,11 @@ class StateGridWidget extends ConsumerWidget {
                   children: [
                     Align(
                       alignment: Alignment.center,
-                      child: Text(gridTexts[index], style: TextStyle(fontSize: 12, ),),
+                      child: Text(gridTexts[index], style: TextStyle(fontSize: 12,
+                      color: isChecked
+                          ? Colors.grey
+                          : Colors.black
+                      ),),
                     )
                   ],
                 ),
