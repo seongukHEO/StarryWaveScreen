@@ -7,6 +7,8 @@ import 'package:starrywave_screen/common/dialog/add_work_cancel_dialog.dart';
 import 'package:starrywave_screen/provider/addWork/checkbox_provider.dart';
 import 'package:starrywave_screen/widget/addJob/state_Grid_widget.dart';
 
+import '../../common/calendar/timepicker_bottom_sheet.dart';
+
 class AddTimeWidget extends ConsumerWidget {
   const AddTimeWidget({super.key});
 
@@ -143,7 +145,15 @@ class AddTimeWidget extends ConsumerWidget {
                         ),),
                         IconButton(
                             onPressed: (){
-
+                              showModalBottomSheet(
+                                  context: context,
+                                  isDismissible: false, // 바깥 클릭해도 닫히지 않음
+                                  enableDrag: false,    // 스와이프로도 닫히지 않음
+                                  builder: (BuildContext context){
+                                    return TimepickerBottomSheet();
+                                  },
+                                  isScrollControlled: true
+                              );
                             },
                             icon: SvgPicture.asset('assets/icon/bold/clock_circle_bold.svg',)
                         )
