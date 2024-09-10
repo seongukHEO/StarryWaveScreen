@@ -1,17 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:starrywave_screen/provider/addWork/selectTime_provider.dart';
 
-class TimepickerBottomSheet extends StatefulWidget {
+class TimepickerBottomSheet extends ConsumerWidget {
   const TimepickerBottomSheet({super.key});
 
   @override
-  State<TimepickerBottomSheet> createState() => _TimepickerBottomSheetState();
-}
-
-class _TimepickerBottomSheetState extends State<TimepickerBottomSheet> {
-  TimeOfDay selectedTime = TimeOfDay.now();
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    TimeOfDay selectTime = ref.watch(selectedTimeProvider);
+    final selectedTimeNotifier = ref.read(selectedTimeProvider.notifier);
     return Container(
       height: 335,
       padding: EdgeInsets.all(20),
@@ -42,15 +40,15 @@ class _TimepickerBottomSheetState extends State<TimepickerBottomSheet> {
                 use24hFormat: false,
                 initialDateTime: DateTime.now(),
                 onDateTimeChanged: (DateTime newDate){
-                  setState(() {
-                    selectedTime = TimeOfDay(hour: newDate.hour, minute: newDate.minute);
-                  });
+                  final newTime = TimeOfDay(hour: newDate.hour, minute: newDate.minute);
+                  selectedTimeNotifier.updateTime(newTime);
                 },
               )
           )
         ],
       ),
-    );;;
+    );;
   }
 }
+
 
