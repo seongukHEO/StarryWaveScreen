@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:starrywave_screen/provider/addWork/checkbox_provider.dart';
 import 'package:starrywave_screen/provider/addWork/selectTime_provider.dart';
 
 class TimepickerBottomSheet extends ConsumerWidget {
@@ -8,8 +9,8 @@ class TimepickerBottomSheet extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    TimeOfDay selectTime = ref.watch(selectedTimeProvider);
     final selectedTimeNotifier = ref.read(selectedTimeProvider.notifier);
+    final checkBoxState = ref.read(checkBoxProvider.notifier);
     return Container(
       height: 335,
       padding: EdgeInsets.all(20),
@@ -28,6 +29,8 @@ class TimepickerBottomSheet extends ConsumerWidget {
               TextButton(
                   onPressed: (){
                     Navigator.pop(context);
+                    checkBoxState.updateCheckBox(false);
+
                   },
                   child: Text("선택", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Color(0xFF00C3CC)),)
               ),

@@ -20,6 +20,7 @@ class StateGridWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isSelected = ref.watch(gridStateProvider);
     final isChecked = ref.watch(checkBoxProvider);
+    final checkState = ref.read(checkBoxProvider.notifier);
 
     return Expanded(
       child: GridView.builder(
@@ -34,6 +35,7 @@ class StateGridWidget extends ConsumerWidget {
             return GestureDetector(
               onTap: (){
                 ref.read(gridStateProvider.notifier).toggleSelected(index);
+                checkState.updateCheckBox(false);
               },
               child: Container(
                 padding: EdgeInsets.fromLTRB(30, 16, 30, 12),

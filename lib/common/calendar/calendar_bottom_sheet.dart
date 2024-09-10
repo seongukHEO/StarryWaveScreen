@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:starrywave_screen/provider/addWork/checkbox_provider.dart';
 import 'package:starrywave_screen/provider/addWork/selectDate_provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -11,6 +12,7 @@ class CalendarBottomSheet extends ConsumerWidget{
   Widget build(BuildContext context, WidgetRef ref) {
     DateTime selectDate = ref.watch(selectDateProvider);
     final selectedDateNotifier = ref.read(selectDateProvider.notifier);
+    final checkBoxState = ref.read(checkBoxProvider.notifier);
 
     return Container(
       height: 560,
@@ -30,6 +32,7 @@ class CalendarBottomSheet extends ConsumerWidget{
               TextButton(
                   onPressed: (){
                     Navigator.pop(context);
+                    checkBoxState.updateCheckBox(false);
                   },
                   child: Text("선택", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Color(0xFF00C3CC)),)
               ),
