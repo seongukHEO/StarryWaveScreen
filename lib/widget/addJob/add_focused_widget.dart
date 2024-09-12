@@ -1,11 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:starrywave_screen/provider/addWork/selectFocus_provider.dart';
 
-class AddFocusedWidget extends StatelessWidget {
+class AddFocusedWidget extends ConsumerWidget {
   const AddFocusedWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    final checkState = ref.watch(selectFocusProvider);
+
     return Scaffold(
       body: Container(
         padding: EdgeInsets.fromLTRB(24, 0, 24, 10),
@@ -45,19 +50,25 @@ class AddFocusedWidget extends StatelessWidget {
             SizedBox(height: 54,),
             GestureDetector(
               onTap: (){
-
+                ref.read(selectFocusProvider.notifier).updateFocus(true);
               },
               child: Container(
                 height: 48,
                 width: 212,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(24),
-                  color: Colors.black
+                  border: Border.all(),
+                  color: checkState
+                    ? Colors.black
+                    : Colors.white
                 ),
                 child: Align(
                   alignment: Alignment.center,
                   child: Text('네! 집중해야 끝낼 수 있어요', style: TextStyle(
-                    fontSize: 15, fontWeight: FontWeight.w700, color: Colors.white
+                    fontSize: 15, fontWeight: FontWeight.w700,
+                      color: checkState
+                      ? Colors.white
+                      : Colors.black
                   ),),
                 ),
               ),
@@ -66,20 +77,26 @@ class AddFocusedWidget extends StatelessWidget {
             SizedBox(height: 20,),
             GestureDetector(
               onTap: (){
-
+                ref.read(selectFocusProvider.notifier).updateFocus(false);
               },
               child: Container(
                 height: 48,
                 width: 270,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24),
-                    color: Colors.white,
+                    color: checkState
+                      ? Colors.white
+                      : Colors.black
+                    ,
                     border: Border.all(color: Colors.grey)
                 ),
                 child: Align(
                   alignment: Alignment.center,
                   child: Text('아니요, 조금만 집중해도 할 수 있어요', style: TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black
+                      fontSize: 15, fontWeight: FontWeight.w700,
+                      color: checkState
+                          ? Colors.black
+                          : Colors.white
                   ),),
                 ),
               ),
