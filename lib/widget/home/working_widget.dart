@@ -14,7 +14,6 @@ class WorkingWidget extends StatefulWidget {
 }
 
 class _WorkingWidgetState extends State<WorkingWidget> with TickerProviderStateMixin{
-  final today = DateTime.now();
 
   late TabController _tabController;
 
