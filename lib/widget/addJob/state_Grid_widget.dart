@@ -8,6 +8,8 @@ class StateGridWidget extends ConsumerWidget {
 
   final List<Color> gridSelectedColor = [Color(0xFFFF614C) ,Color(0xFFFFB01A), Color(0xFF8AC000), Color(0xFF00C3CC)];
 
+  final List<String> emoji = ['🥵', '😭', '😚', '😅'];
+
   final List<String> gridTexts = [
     '    수습불가!!\n내 인생 망할지도',
     '미래의 내가 좀\n많이 힘들지도',
@@ -48,14 +50,19 @@ class StateGridWidget extends ConsumerWidget {
                 ),
                 child: Column(
                   children: [
-                    Align(
-                      alignment: Alignment.center,
-                      child: Text(gridTexts[index], style: TextStyle(fontSize: 12,
-                      color: isChecked
-                          ? Colors.grey
-                          : Colors.black
-                      ),),
-                    )
+                    Column(
+                      children: [
+                        Align(
+                            alignment: Alignment.center,
+                            child: Column(
+                              children: [
+                                Text(emoji[index], style: TextStyle(fontSize: 30,)),
+                                Text(gridTexts[index], style: TextStyle(fontWeight: FontWeight.w600)),
+                              ],
+                            )
+                        )
+                      ],
+                    ),
                   ],
                 ),
               ),
