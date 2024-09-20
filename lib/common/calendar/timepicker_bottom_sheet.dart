@@ -50,7 +50,7 @@ class TimepickerBottomSheet extends ConsumerWidget {
           )
         ],
       ),
-    );;
+    );
   }
 }
 

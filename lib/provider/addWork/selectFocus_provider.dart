@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SelectfocusProvider extends StateNotifier<bool>{
-  SelectfocusProvider() : super(true);
+class SelectFocusProvider extends StateNotifier<bool>{
+  SelectFocusProvider() : super(true);
 
   void updateFocus(bool newFocus){
     state = newFocus;
@@ -9,6 +9,6 @@ class SelectfocusProvider extends StateNotifier<bool>{
 
 }
 
-final selectFocusProvider = StateNotifierProvider<SelectfocusProvider, bool>((ref){
-  return SelectfocusProvider();
+final selectFocusProvider = StateNotifierProvider<SelectFocusProvider, bool>((ref){
+  return SelectFocusProvider();
 });
