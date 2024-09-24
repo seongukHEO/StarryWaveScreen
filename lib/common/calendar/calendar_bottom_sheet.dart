@@ -34,7 +34,7 @@ class CalendarBottomSheet extends ConsumerWidget{
                     Navigator.pop(context);
                     checkBoxState.updateCheckBox(false);
                   },
-                  child: Text("선택", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Color(0xFF00C3CC)),)
+                  child: Text("선택", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xFF00C3CC)),)
               ),
             ],
           ),
